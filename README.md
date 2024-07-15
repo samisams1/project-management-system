@@ -64,3 +64,30 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+Front-end:
+
+Laravel UI: This package provides a good starting point for building the user interface of a Laravel application, including the default authentication scaffolding.
+Tailwind CSS: This is a popular utility-first CSS framework that can be used to style the front-end components.
+Livewire: Livewire is a full-stack Laravel framework for building dynamic user interfaces without writing any JavaScript.
+Back-end:
+
+Laravel Framework: The core of the application is built using the Laravel framework, a popular PHP web application framework.
+Laravel Sanctum: This package provides a featherweight authentication system for SPAs, mobile apps, and simple, token-based APIs.
+Laravel Scout: This package provides a driver-based full-text search implementation for your Eloquent models.
+Laravel Tinker: This package provides a REPL (Read-Eval-Print Loop) for your Laravel application, allowing you to interactively explore and test your application.
+Libraries and Dependencies:
+
+AWS SDK for PHP: This library allows you to interact with various AWS services, such as S3, from your Laravel application.
+Barryvdh/Laravel-DomPDF: This package is a wrapper for the PHP DomPDF library, which allows you to generate PDF documents from HTML.
+Guzzle HTTP Client: This is a popular PHP HTTP client that can be used to make HTTP requests from your Laravel application.
+Laminas Hydrator: This library provides a way to extract data from an object or convert data into an object.
+Laravel Invoices: This is a package for generating invoices in Laravel applications.
+Flysystem AWS S3 v3: This package provides a filesystem adapter for the Amazon S3 storage service.
+Munafio/Chatify: This is a package that provides a simple and customizable chat system for Laravel applications.
+Protonemedia/Laravel Cross Eloquent Search: This package allows you to perform cross-database Eloquent searches.
+Spatie/Laravel Medialibrary: This package provides an easy way to associate files with Eloquent models.
+Spatie/Laravel Permission: This package allows you to manage user permissions and roles in a Laravel application.
+Maatwebsite/Excel: This package provides a fluent, Excel exporter for Laravel.
+Dompdf: This is a PHP library that can convert HTML to PDF.
