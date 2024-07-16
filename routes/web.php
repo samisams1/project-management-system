@@ -47,6 +47,7 @@ use Spatie\Permission\Middlewares\PermissionMiddleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Config;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +136,9 @@ Route::middleware(['CheckInstallation'])->group(function () {
         Route::get('/home/upcoming-work-anniversaries', [HomeController::class, 'upcoming_work_anniversaries']);
 
         Route::get('/home/members-on-leave', [HomeController::class, 'members_on_leave']);
+
+        //Departments----------------------------------------------------
+         Route::get('/departments', [DepartmentController::class, 'index']);
 
         //Projects--------------------------------------------------------
 

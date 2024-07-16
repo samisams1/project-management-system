@@ -100,6 +100,33 @@ $pendingLeaveRequestsCount = $query->count();
             </a>
         </li>
         @if ($user->can('manage_projects'))
+        <li class="menu-item {{ Request::is('departments') || Request::is('tags/*') || Request::is('departments/*') ? 'active open' : '' }}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-briefcase-alt-2 text-success"></i>
+                <div><?= get_label('departments', 'Departments') ?></div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('departments') || Request::is('departments/*') && !Request::is('departments/favorite') ? 'active' : '' }}">
+                    <a href="/departments" class="menu-link">
+                        <div><?= get_label('manage_departments', 'Manage departments') ?></div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('departments/favorite') ? 'active' : '' }}">
+                    <a href="/departments/favorite" class="menu-link">
+                        <div><?= get_label('favorite_departments', 'Favorite departments') ?></div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('tags/*') ? 'active' : '' }}">
+                    <a href="/tags/manage" class="menu-link">
+                        <div><?= get_label('tags', 'Tags') ?></div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        @endif
+        @if ($user->can('manage_projects'))
         <li class="menu-item {{ Request::is('projects') || Request::is('tags/*') || Request::is('projects/*') ? 'active open' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-briefcase-alt-2 text-success"></i>
