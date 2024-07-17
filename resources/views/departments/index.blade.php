@@ -1,45 +1,41 @@
 @extends('layout')
 
 @section('title')
-<?= get_label('departments', 'Departments') ?> - <?= get_label('list_view', 'List view') ?>
+    {{ get_label('departments', 'Departments') }} - {{ get_label('list_view', 'List view') }}
 @endsection
 
 @section('content')
-<div class="container-fluid">
-    <div class="d-flex justify-content-between mb-2 mt-4">
-        <div>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-style1">
-                    <li class="breadcrumb-item">
-                        <a href="{{url('/home')}}"><?= get_label('home', 'Home') ?></a>
-                    </li>
-                    @isset($project->id)
-                    <li class="breadcrumb-item">
-                        <a href="{{url('/projects')}}"><?= get_label('projects', 'Projects') ?></a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{url('/projects/information/'.$project->id)}}">{{$project->title}}</a>
-                    </li>
-                    @endisset
-                    <li class="breadcrumb-item active"><?= get_label('tasks', 'Tasks') ?></li>
-                </ol>
-            </nav>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between mb-2 mt-4">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1">
+                        <li class="breadcrumb-item">
+                            <a href="{{ url('/home') }}">{{ get_label('home', 'Home') }}</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ url('/departments') }}">{{ get_label('departments', 'Departments') }}</a>
+                        </li>
+                        <li class="breadcrumb-item active">{{ get_label('list', 'List') }}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div>
+                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#create_department_modal">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ get_label('create_Department', 'Create Department') }}">
+                        <i class='bx bx-plus'></i>
+                    </button>
+                </a>
+                <a href="{{ url(request()->has('status') ? '/departments?status=' . request()->status : '/departments') }}">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="{{ get_label('grid_view', 'Grid view') }}">
+                        <i class='bx bxs-grid-alt'></i>
+                    </button>
+                </a>
+            </div>
+            <input type="hidden" id="type">
+            <input type="hidden" id="typeId">
         </div>
-        <div>
-            @php
-            $url = isset($project->id) ? '/projects/tasks/draggable/' . $project->id : '/tasks/draggable';
-            $additionalParams = request()->has('project') ? '/projects/tasks/draggable/' . request()->project : '';
-            $finalUrl = url($additionalParams ?: $url);
-            @endphp
 
-            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#create_task_modal"><button type="button" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title=" <?= get_label('create_task', 'Create task') ?>"><i class="bx bx-plus"></i></button></a>
-            <a href="{{ $finalUrl }}"><button type="button" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="<?= get_label('draggable', 'Draggable') ?>"><i class="bx bxs-dashboard"></i></button></a>
-        </div>
-        <input type="hidden" id="type">
-        <input type="hidden" id="typeId">
+        <x-departments-card :departments="$departments" />
     </div>
-    <?php
-    $id = isset($project->id) ? 'project_' . $project->id : '';
-    ?>
-</div>
 @endsection
